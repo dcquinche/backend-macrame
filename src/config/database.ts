@@ -9,7 +9,7 @@ async function configDb() {
 
   try {
     await mongoose.connect(uri)
-    console.log('Connected to favs-api database');
+    console.log('Connected to macrame database');
   } catch (error) {
     console.log(error);
     process.exit(1);
