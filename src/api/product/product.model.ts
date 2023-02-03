@@ -1,11 +1,11 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface ProductDocument extends Document{
-  name: String,
-  image: String,
-  price: Number,
-  description?: String,
-  category: String,
+  name: String;
+  image: String;
+  price: Number;
+  description?: String;
+  category: "Accesorios" | "Atrapasueños" | "Cojines" | "Portamacetas" | "Tapices";
   createdAt?: Date;
   updatedAt?: Date;
 }

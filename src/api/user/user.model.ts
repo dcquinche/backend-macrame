@@ -1,13 +1,13 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface UserDocument extends Document{
-  email: String,
-  password: String,
-  name?: String,
-  phone?: String,
-  address?: String,
-  city?: String,
-  department?: String,
+  email: String;
+  password: String;
+  name?: String;
+  phone?: String;
+  address?: String;
+  city?: String;
+  department?: String;
   createdAt?: Date;
   updatedAt?: Date;
 }
