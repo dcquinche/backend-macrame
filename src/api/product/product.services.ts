@@ -6,9 +6,9 @@ export function getAllProducts() {
 }
 
 export function getProductById(id: string) {
-  return Product.findById(id)
+  return Product.findById(id);
 }
 
 export function createProduct(input: DocumentDefinition<Omit<ProductDocument, 'createdAt' | 'updatedAt'>>) {
-  return Product.create(input)
+  return Product.create(input);
 }

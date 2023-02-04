@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import {getUserById, createUser, updateUser} from "./user.services";
+import {getUserById, createUser, updateUser, getUserFilter} from "./user.services";
 
 export async function handleGetUserById(req: Request, res: Response) {
   const { id } = req.params;
@@ -16,9 +16,16 @@ export async function handleGetUserById(req: Request, res: Response) {
 
 export async function handleCreateUser(req: Request, res: Response) {
   const data = req.body;
+  const {email} = req.body;
   try {
-    const user = await createUser(data);
-    return res.status(200).json(user);
+    const filter = {email: email};
+    const userFiltered = await getUserFilter(filter);
+    if(userFiltered){
+      return res.status(200).json({ message: "User already exist" });
+    } else {
+      const user = await createUser(data);
+      return res.status(200).json(user);
+    }
   } catch (error) {
     return res.status(500).json(error);
   }
