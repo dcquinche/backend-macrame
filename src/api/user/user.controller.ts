@@ -1,3 +1,4 @@
+import exp from 'constants';
 import {Request, Response} from 'express';
 import {getUserById, createUser, updateUser, getUserFilter} from "./user.services";
 
@@ -21,7 +22,7 @@ export async function handleCreateUser(req: Request, res: Response) {
     const filter = {email: email};
     const userFiltered = await getUserFilter(filter);
     if(userFiltered){
-      return res.status(200).json({ message: "User already exist" });
+      return res.status(200).json(userFiltered);
     } else {
       const user = await createUser(data);
       return res.status(200).json(user);
