@@ -6,7 +6,7 @@ export function createCart(cart: DocumentDefinition<Omit<CartDocument, 'createdA
 }
 
 export function updateCart(id: string, cart: DocumentDefinition<Omit<CartDocument, 'createdAt' | 'updatedAt'>>) {
-  return Cart.findByIdAndUpdate(id, cart, {new: true});
+  return Cart.findByIdAndUpdate(id, cart, {new: true}).populate('product');
 }
 
 export function getCartFilter(filter: FilterQuery<CartDocument>) {
