@@ -8,6 +8,7 @@ export interface UserDocument extends Document{
   city?: String;
   department?: String;
   image?: String;
+  shoppingBag?: Array<Object>;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -36,6 +37,10 @@ const userSchema = new Schema({
   image: {
     type: String,
   },
+  shoppingBag: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Cart',
+  }],
 }, {timestamps: true,});
 
 const User = model<UserDocument>("User", userSchema);

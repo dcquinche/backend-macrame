@@ -9,6 +9,6 @@ export function getProductById(id: string) {
   return Product.findById(id);
 }
 
-export function createProduct(input: DocumentDefinition<Omit<ProductDocument, 'createdAt' | 'updatedAt'>>) {
-  return Product.create(input);
+export function createProduct(product: DocumentDefinition<Omit<ProductDocument, 'createdAt' | 'updatedAt'>>) {
+  return Product.create(product);
 }

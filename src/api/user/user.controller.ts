@@ -15,7 +15,7 @@ export async function handleGetUserById(req: Request, res: Response) {
   }
 }
 
-export async function handleCreateUser(req: Request, res: Response) {
+export async function handleCreateOrGetUser(req: Request, res: Response) {
   const data = req.body;
   const {email} = req.body;
   try {
