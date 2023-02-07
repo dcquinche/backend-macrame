@@ -17,3 +17,7 @@ export function deleteCart(id: string) {
   return Cart.findByIdAndDelete(id);
 }
 
+export function getAllCarts() {
+  return Cart.find({});
+}
+

@@ -9,6 +9,7 @@ export interface UserDocument extends Document{
   department?: String;
   image?: String;
   shoppingBag?: Array<Object>;
+  product?: Object;
   createdAt?: Date;
   updatedAt?: Date;
 }

@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import {createCart, updateCart, getCartFilter, deleteCart} from "./cart.services";
+import {createCart, updateCart, getCartFilter, deleteCart, getAllCarts} from "./cart.services";
 
 export async function handleCreateCart(req: Request, res: Response) {
   const data = req.body;
@@ -41,6 +41,15 @@ export async function handleGetCartsByUser(req: Request, res: Response) {
     const filter = {user: user};
     const cartsFiltered = await getCartFilter(filter);
     return res.status(200).json(cartsFiltered);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+}
+
+export async function handleGetAllCarts(req: Request, res: Response) {
+  try {
+    const carts = await getAllCarts();
+    return res.status(200).json(carts);
   } catch (error) {
     return res.status(500).json(error);
   }

@@ -1,19 +1,6 @@
 import exp from 'constants';
 import {Request, Response} from 'express';
-import {getUserById, createUser, updateUser, getUserFilter} from "./user.services";
-
-export async function handleGetUserById(req: Request, res: Response) {
-  const { id } = req.params;
-  try {
-    const user = await getUserById(id);
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-    return res.status(200).json(user);
-  } catch (error) {
-    return res.status(500).json(error);
-  }
-}
+import {createUser, updateUser, getUserFilter} from "./user.services";
 
 export async function handleCreateOrGetUser(req: Request, res: Response) {
   const data = req.body;
