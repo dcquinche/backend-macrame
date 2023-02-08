@@ -10,5 +10,5 @@ export function updateUser(id: string, user: DocumentDefinition<Omit<UserDocumen
 }
 
 export function getUserFilter(filter: FilterQuery<UserDocument>) {
-  return User.findOne(filter);
+  return User.findOne(filter).populate({path: 'shoppingBag', populate: {path: 'product'}});
 }

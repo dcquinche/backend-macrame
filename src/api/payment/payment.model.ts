@@ -1,9 +1,9 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface paymentDocument extends Document{
-  totalPrice?: Number;
   email?: String;
   name?: String;
+  orderNum?: String;
   event?: String;
   data?: Object;
   environment?: String;
@@ -15,13 +15,13 @@ export interface paymentDocument extends Document{
 }
 
 const paymentSchema = new Schema({
-  totalPrice: {
-    type: Number,
-  },
   email: {
     type: String,
   },
   name: {
+    type: String,
+  },
+  orderNum: {
     type: String,
   },
   event: {
