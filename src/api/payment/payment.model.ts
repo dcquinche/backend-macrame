@@ -1,10 +1,15 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface paymentDocument extends Document{
-  totalPrice: Number;
-  email: String;
-  name: String;
-  carts?: Array<Object>;
+  totalPrice?: Number;
+  email?: String;
+  name?: String;
+  event?: String;
+  data?: Object;
+  environment?: String;
+  signature?: Object;
+  timestamp?: Number;
+  sent_at?: Date;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -12,20 +17,31 @@ export interface paymentDocument extends Document{
 const paymentSchema = new Schema({
   totalPrice: {
     type: Number,
-    require: true,
   },
   email: {
     type: String,
-    require: true,
   },
   name: {
     type: String,
-    require: true,
   },
-  carts: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Cart',
-  }],
+  event: {
+    type: String,
+  },
+  data: {
+    type: Object,
+  },
+  environment: {
+    type: String,
+  },
+  signature: {
+    type: Object,
+  },
+  timestamp: {
+    type: Number,
+  },
+  sent_at: {
+    type: Date,
+  },
 }, {timestamps: true,});
 
 const Payment = model<paymentDocument>("Payment", paymentSchema);
