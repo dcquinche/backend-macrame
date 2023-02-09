@@ -5,7 +5,7 @@ export interface ProductDocument extends Document{
   image: String;
   price: Number;
   description?: String;
-  category: "Accesorios" | "Atrapasueños" | "Cojines" | "Portamacetas" | "Tapices";
+  category: "Otros" | "Atrapasueños" | "Cojines" | "Portamacetas" | "Tapices";
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -28,7 +28,7 @@ const productSchema = new Schema({
   },
   category: {
     type: String,
-    enum: ["Accesorios", "Atrapasueños", "Cojines", "Portamacetas", "Tapices"],
+    enum: ["Otros", "Atrapasueños", "Cojines", "Portamacetas", "Tapices"],
     require: true,
   },
 }, {timestamps: true,});
