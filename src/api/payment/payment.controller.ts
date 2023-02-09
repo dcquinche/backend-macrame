@@ -25,7 +25,7 @@ export async function handleCreateOrder(req: Request, res: Response) {
       dynamic_template_data:{
         name: order.name,
         orderNum: order.orderNum,
-        url: 'http://localhost:3000/'
+        url: 'https://frontend-macrame.vercel.app/'
       },
     }
     await sendMailSendGrid(msg);
