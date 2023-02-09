@@ -4,6 +4,8 @@ export interface paymentDocument extends Document{
   email?: String;
   name?: String;
   orderNum?: String;
+  totalPrice?: Number;
+  user?: Object;
   event?: String;
   data?: Object;
   environment?: String;
@@ -23,6 +25,13 @@ const paymentSchema = new Schema({
   },
   orderNum: {
     type: String,
+  },
+  totalPrice: {
+    type: Number,
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
   },
   event: {
     type: String,

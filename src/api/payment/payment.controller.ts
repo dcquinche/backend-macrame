@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import {createPayment} from "./payment.services";
+import {createPayment, getPaymentFilter} from "./payment.services";
 import { sendMailSendGrid } from '../../utils/mail/mail';
 
 export async function handleCreatePayment(req: Request, res: Response) {
@@ -30,6 +30,17 @@ export async function handleCreateOrder(req: Request, res: Response) {
     }
     await sendMailSendGrid(msg);
     return res.status(200).json(order);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+}
+
+export async function handleGetPaymentByUser(req: Request, res: Response) {
+  const {user} = req.body;
+  try {
+    const filter = {user: user};
+    const paymentFiltered = await getPaymentFilter(filter);
+    return res.status(200).json(paymentFiltered);
   } catch (error) {
     return res.status(500).json(error);
   }
