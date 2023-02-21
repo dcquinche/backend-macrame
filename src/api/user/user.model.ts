@@ -8,6 +8,7 @@ export interface UserDocument extends Document{
   city?: String;
   department?: String;
   image?: String;
+  role?: 'User' | 'Admin';
   shoppingBag?: Array<Object>;
   product?: Object;
   createdAt?: Date;
@@ -37,6 +38,11 @@ const userSchema = new Schema({
   },
   image: {
     type: String,
+  },
+  role: {
+    type: String,
+    enum: ['User', 'Admin'],
+    default: 'User',
   },
   shoppingBag: [{
     type: Schema.Types.ObjectId,
