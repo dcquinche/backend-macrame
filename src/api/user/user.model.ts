@@ -9,7 +9,6 @@ export interface UserDocument extends Document{
   department?: String;
   image?: String;
   role?: 'User' | 'Admin';
-  shoppingBag?: Array<Object>;
   product?: Object;
   createdAt?: Date;
   updatedAt?: Date;
@@ -44,10 +43,6 @@ const userSchema = new Schema({
     enum: ['User', 'Admin'],
     default: 'User',
   },
-  shoppingBag: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Cart',
-  }],
 }, {timestamps: true,});
 
 const User = model<UserDocument>("User", userSchema);

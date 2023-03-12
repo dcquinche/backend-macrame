@@ -6,9 +6,9 @@ export function createUser(user: DocumentDefinition<Omit<UserDocument, 'createdA
 }
 
 export function updateUser(id: string, user: DocumentDefinition<Omit<UserDocument, 'createdAt' | 'updatedAt'>>) {
-  return User.findByIdAndUpdate(id, user, {new: true}).populate({path: 'shoppingBag', populate: {path: 'product'}});
+  return User.findByIdAndUpdate(id, user, {new: true});
 }
 
 export function getUserFilter(filter: FilterQuery<UserDocument>) {
-  return User.findOne(filter).populate({path: 'shoppingBag', populate: {path: 'product'}});
+  return User.findOne(filter);
 }

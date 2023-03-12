@@ -1,11 +1,6 @@
 import { Schema, model, Document } from 'mongoose';
 
-export interface paymentDocument extends Document{
-  email?: String;
-  name?: String;
-  orderNum?: String;
-  totalPrice?: Number;
-  user?: Object;
+export interface PaymentDocument extends Document{
   event?: String;
   data?: Object;
   environment?: String;
@@ -17,22 +12,6 @@ export interface paymentDocument extends Document{
 }
 
 const paymentSchema = new Schema({
-  email: {
-    type: String,
-  },
-  name: {
-    type: String,
-  },
-  orderNum: {
-    type: String,
-  },
-  totalPrice: {
-    type: Number,
-  },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
   event: {
     type: String,
   },
@@ -53,6 +32,6 @@ const paymentSchema = new Schema({
   },
 }, {timestamps: true,});
 
-const Payment = model<paymentDocument>("Payment", paymentSchema);
+const Payment = model<PaymentDocument>("Payment", paymentSchema);
 
 export default Payment;
